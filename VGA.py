@@ -76,7 +76,7 @@ def paral_Hsync():
     irq(0)               # Set IRQ to signal end of line (47 cycles)
     wrap()
 #     
-paral_write_Hsync = StateMachine(0, paral_Hsync,freq=SM0_FREQ, set_base=Pin(4))
+paral_write_Hsync = StateMachine(0, paral_Hsync,freq=SM0_FREQ, set_base=Pin(16))
 # #
 # #sm1 is used for V sync signal
 @asm_pio(sideset_init=(PIO.OUT_HIGH,) * 1, autopull=True, pull_thresh=32)
@@ -105,7 +105,7 @@ def paral_Vsync():
     wait(1,irq,0)
     wrap()
 # 
-paral_write_Vsync = StateMachine(1, paral_Vsync,freq=SM1_FREQ, sideset_base=Pin(5))
+paral_write_Vsync = StateMachine(1, paral_Vsync,freq=SM1_FREQ, sideset_base=Pin(17))
 
 #sm4 is used for RGB signal
 @asm_pio(out_init=(PIO.OUT_LOW,) * 3, out_shiftdir=PIO.SHIFT_RIGHT, sideset_init=(PIO.OUT_LOW,) * 3, autopull=True, pull_thresh=usable_bits)
@@ -354,7 +354,6 @@ print("Number of bits (usable):\t"+str(usable_bits*visible_pix))
 collect()
 a0=mem_free()
 print("\nremaining RAM (kB):\t"+str(round(a0/1024,3)))
-
 
 # 3 bit color names
 RED     = 0b001
