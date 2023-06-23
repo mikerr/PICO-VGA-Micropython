@@ -1,6 +1,8 @@
 # PICO-VGA-Micropython
 A simple 640x480 60Hz VGA display driver to use with Pico and Micropython
 
+[edit] now supporting pimoroni VGAdemo pins
+
 Hello All,
 
 I came out with this simple driver, allowing to use a VGA screen with a 640x480 resolution and 3 bits per pixel (8 colors).
